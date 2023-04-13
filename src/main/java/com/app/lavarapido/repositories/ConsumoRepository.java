@@ -8,4 +8,5 @@ import com.app.lavarapido.models.ConsumoModel;
 @Repository
 public interface ConsumoRepository extends JpaRepository<ConsumoModel, Long> {
 
+	boolean existsByNome(String nome);
 }
