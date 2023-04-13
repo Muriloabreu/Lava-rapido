@@ -7,5 +7,7 @@ import com.app.lavarapido.models.TipoServicoModel;
 
 @Repository
 public interface TipoServicoRepository extends JpaRepository<TipoServicoModel, Long> {
+	
+	boolean existsByNome(String nome);
 
 }
