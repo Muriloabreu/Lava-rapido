@@ -20,10 +20,12 @@ public class ClienteModel {
 	private String nome;
 	@Column(nullable = false,  length = 100)
 	private String sobreNome;
-	@Column(nullable = false, length = 20)
+	@Column(nullable = false, unique = true, length = 20)
 	private String cpf;
 	@Column(nullable = false,  length = 100)
 	private String telefone;
+	
+	
 	public Long getId() {
 		return id;
 	}
