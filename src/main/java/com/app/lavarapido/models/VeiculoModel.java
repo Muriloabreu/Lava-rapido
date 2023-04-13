@@ -20,7 +20,7 @@ public class VeiculoModel {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@Column(nullable = false, unique = true, length = 7)
-	private String placaCarro;
+	private String placa;
 	@Column(nullable = false, length = 70)
 	private String fabricante;
 	@Column(nullable = false, length = 70)
@@ -40,11 +40,11 @@ public class VeiculoModel {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getPlacaCarro() {
-		return placaCarro;
+	public String getPlaca() {
+		return placa;
 	}
-	public void setPlacaCarro(String placaCarro) {
-		this.placaCarro = placaCarro;
+	public void setPlaca(String placa) {
+		this.placa = placa;
 	}
 	public String getFabricante() {
 		return fabricante;
@@ -79,13 +79,13 @@ public class VeiculoModel {
 	
 	@Override
 	public String toString() {
-		return "VeiculoModel [id=" + id + ", placaCarro=" + placaCarro + ", fabricante=" + fabricante + ", modelo="
+		return "VeiculoModel [id=" + id + ", placaCarro=" + placa + ", fabricante=" + fabricante + ", modelo="
 				+ modelo + ", cor=" + cor + ", registrationDate=" + registrationDate + ", cliente=" + cliente + "]";
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(cliente, cor, fabricante, id, modelo, placaCarro, registrationDate);
+		return Objects.hash(cliente, cor, fabricante, id, modelo, placa, registrationDate);
 	}
 	
 	@Override
@@ -99,7 +99,7 @@ public class VeiculoModel {
 		VeiculoModel other = (VeiculoModel) obj;
 		return Objects.equals(cliente, other.cliente) && Objects.equals(cor, other.cor)
 				&& Objects.equals(fabricante, other.fabricante) && Objects.equals(id, other.id)
-				&& Objects.equals(modelo, other.modelo) && Objects.equals(placaCarro, other.placaCarro)
+				&& Objects.equals(modelo, other.modelo) && Objects.equals(placa, other.placa)
 				&& Objects.equals(registrationDate, other.registrationDate);
 	}
 	
