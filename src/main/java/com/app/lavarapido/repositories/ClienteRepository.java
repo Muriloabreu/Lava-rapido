@@ -8,4 +8,5 @@ import com.app.lavarapido.models.ClienteModel;
 @Repository
 public interface ClienteRepository extends JpaRepository<ClienteModel, Long> {
 
+	boolean existsByCpf(String cpf);
 }
