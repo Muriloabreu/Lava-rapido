@@ -45,8 +45,8 @@ public class TipoServicoImpl implements TipoServicoService{
 
 	@Override
 	public boolean existsByNome(String nome) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return tipoServicoRepository.existsByNome(nome);
 	}
 
 }
