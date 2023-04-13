@@ -38,6 +38,7 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
+	@Transactional
 	public void delete(ClienteModel cliente) {
 		
 		clienteRepository.delete(cliente);
