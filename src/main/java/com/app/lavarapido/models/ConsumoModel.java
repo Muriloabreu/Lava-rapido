@@ -22,6 +22,7 @@ public class ConsumoModel {
 	private Long quantidade;
 	@Column(nullable = false)
 	private double valorTotal;
+	
 	public Long getId() {
 		return id;
 	}
