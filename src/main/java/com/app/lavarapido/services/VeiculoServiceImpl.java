@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.lavarapido.models.VeiculoModel;
+import com.app.lavarapido.repositories.VeiculoRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -14,38 +15,41 @@ import jakarta.transaction.Transactional;
 public class VeiculoServiceImpl implements VeiculoService{
 
 	@Autowired
-	VeiculoService veiculoService;
+	VeiculoRepository veiculoRepository;
 	
 	@Override
 	public List<VeiculoModel> findAll() {
 		
-		return veiculoService.findAll();
+		return veiculoRepository.findAll();
 	}
 
 	@Override
 	public Optional<VeiculoModel> findById(Long id) {
 		
-		return veiculoService.findById(id);
+		return veiculoRepository.findById(id);
 	}
 
 	@Override
 	@Transactional
 	public VeiculoModel save(VeiculoModel veiculo) {
 		
-		return veiculoService.save(veiculo);
+		return veiculoRepository.save(veiculo);
 	}
 
 	@Override
+	@Transactional
 	public void delete(VeiculoModel veiculo) {
 		
-		veiculoService.delete(veiculo);
+		veiculoRepository.delete(veiculo);
 		
 	}
 
 	@Override
 	public boolean existsByPlaca(String placa) {
 		
-		return veiculoService.existsByPlaca(placa);
+		return veiculoRepository.existsByPlaca(placa);
 	}
+
+	
 
 }
