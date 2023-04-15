@@ -1,21 +1,22 @@
 package com.app.lavarapido.dtos;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class ConsumoDtos {
 	
 	@NotBlank
 	private String nome;
-	@NotBlank
+	@NotNull
 	private Long quantidade;
-	@NotBlank
+	@NotNull
 	private double valorTotal;
 	
 	public ConsumoDtos() {
 		super();
 	}
 
-	public ConsumoDtos(@NotBlank String nome, @NotBlank Long quantidade, @NotBlank double valorTotal) {
+	public ConsumoDtos(@NotBlank String nome, @NotNull Long quantidade, @NotNull double valorTotal) {
 		super();
 		this.nome = nome;
 		this.quantidade = quantidade;
