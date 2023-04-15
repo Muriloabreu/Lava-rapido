@@ -28,7 +28,7 @@ public class ServicoModel {
 	@JoinColumn(name = "veiculo_id", referencedColumnName = "id")
 	private VeiculoModel veiculo;
 	@OneToMany
-	@JoinColumn(name = "consumo_id")
+	@JoinColumn(name = "servicos_id")
 	private List<ConsumoModel> consumos = new ArrayList<>();
 	@Column(nullable = false)
 	private double valorTotal;
@@ -59,6 +59,9 @@ public class ServicoModel {
 		this.consumos = consumos;
 	}
 	public double getValorTotal() {
+		Double soma;
+		soma = 0.0; 
+		
 		return valorTotal;
 	}
 	public void setValorTotal(double valorTotal) {
