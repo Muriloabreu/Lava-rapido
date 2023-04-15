@@ -8,5 +8,5 @@ import com.app.lavarapido.models.VeiculoModel;
 @Repository
 public interface VeiculoRepository extends JpaRepository<VeiculoModel, Long>{
 
-	boolean existsByPlaca (VeiculoModel veiculo);
+	boolean existsByPlaca (String placa);
 }
