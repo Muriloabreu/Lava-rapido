@@ -1,5 +1,7 @@
 package com.app.lavarapido.controllers;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,11 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.app.lavarapido.dtos.VeiculoDtos;
-import com.app.lavarapido.models.ClienteModel;
 import com.app.lavarapido.models.VeiculoModel;
 import com.app.lavarapido.services.VeiculoService;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600) /* Serve para permitir que seja acessado de qualquer fonte */
@@ -34,7 +36,7 @@ public class VeiculoController {
 	VeiculoService veiculoService;
 	
 	@PostMapping
-	public ResponseEntity<Object> saveConsumo(@RequestBody @Valid VeiculoDtos veiculoDtos){
+	public ResponseEntity<Object> saveVeiculo(@RequestBody @Valid VeiculoDtos veiculoDtos){
 		
 		if (veiculoService.existsByPlaca(veiculoDtos.getPlaca())) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Veículo já cadastrado!"); /* Check se veiculo já está cadastrada */
@@ -42,7 +44,7 @@ public class VeiculoController {
 		
 		VeiculoModel veiculoModel = new VeiculoModel();
 		BeanUtils.copyProperties(veiculoDtos, veiculoModel); /*Coverte Dtos para Model*/
-		
+		veiculoModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC"))); /* è um set de Data */
 		return ResponseEntity.status(HttpStatus.CREATED).body(veiculoService.save(veiculoModel));
 	}
 	
@@ -91,10 +93,8 @@ public class VeiculoController {
 		veiculoModel.setFabricante(veiculoDtos.getFabricante());
 		veiculoModel.setModelo(veiculoDtos.getModelo());
 		veiculoModel.setCor(veiculoDtos.getCor());
-		veiculoModel.setRegistrationDate(veiculoDtos.getRegistrationDate());
-		veiculoModel.setCliente(veiculoDtos.getCliente());
-		
-		
+		veiculoModel.setRegistrationDate(veiculoModel.getRegistrationDate());
+		veiculoModel.setCliente(veiculoDtos.getCliente());		
 				
 		return ResponseEntity.status(HttpStatus.OK).body(veiculoService.save(veiculoModel));
 	
