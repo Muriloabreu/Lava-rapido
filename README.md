@@ -30,6 +30,120 @@ API - Java utilizando Spring boot com o proposito de realizar CRUD de Serviço d
 
 Necessário ter um servidor Tomcat para poder rodar o projeto Java
 
+##  Utilize uma plataforma de consultas de API's e faça a requisição de acordo os modelos disponíveis na sessão abaixo.
+</code></pre>
+ - Modelos de requisição JSON
+</p>
+
+</P>
+<h5>Consumos</h5>
+
+```json
+{
+        "id": 3,
+        "nome": "Cerveja",
+        "quantidade": 10,
+        "valorTotal": 90.0
+    }
+```
+</p>
+<h5>Clientes</h5>
+
+```json
+{
+        "id": 1,
+        "nome": "Murilo",
+        "sobreNome": "Abreu",
+        "cpf": "21673948123",
+        "telefone": "999945012"
+    }
+```
+</p>
+<h5>TipoServico</h5>
+
+```json
+{
+        "id": 2,
+        "nome": "Lavagem Basic - Polimento",
+        "valor": 75.0
+    },
+    {
+        "id": 3,
+        "nome": "Lavagem Basic ",
+        "valor": 35.0
+    }
+```
+</p>
+</p>
+
+<h5>Veiculo</h5>
+
+```json
+{
+    "id": 1,
+    "placa": "ABC1010",
+    "fabricante": "volkswagen",
+    "modelo": "golf sportline",
+    "cor": "PRATA",
+    "registrationDate": "2023-04-15T19:26:12.801122",
+    "cliente": {
+        "id": 1,
+        "nome": "Murilo",
+        "sobreNome": "Abreu",
+        "cpf": "21673948123",
+        "telefone": "999945012"
+    }
+}
+```
+</p>
+</p>
+
+<h5>Servico</h5>
+
+```json
+{
+    "id": 2,
+    "tipoServico": {
+        "id": 3,
+        "nome": "Lavagem Basic ",
+        "valor": 35.0
+    },
+    "veiculo": {
+        "id": 1,
+        "placa": "ABC1010",
+        "fabricante": "volkswagen",
+        "modelo": "golf sportline",
+        "cor": "PRATA",
+        "registrationDate": "2023-04-15T19:26:12.801122",
+        "cliente": {
+            "id": 1,
+            "nome": "Murilo",
+            "sobreNome": "Abreu",
+            "cpf": "21673948123",
+            "telefone": "999945012"
+        }
+    },
+    "consumos": [
+        {
+            "id": 1,
+            "nome": "Cerveja A",
+            "quantidade": 5,
+            "valorTotal": 50.0
+        },
+        {
+            "id": 2,
+            "nome": "Cerveja B",
+            "quantidade": 10,
+            "valorTotal": 70.0
+        }
+    ],
+    "valorTotal": 300.0
+}
+```
+</p>
+</p>
+
+
 - Baixar o projeto
 
 ```bash
@@ -42,4 +156,4 @@ git clone git@github.com:Muriloabreu/Lava-rapido.git
 
 Murilo Abreu do Nascimento
 
-https://www.linkedin.com/in/murilo-abreu-07544973/
+https://www.linkedin.com/in/murilo-abreu/
