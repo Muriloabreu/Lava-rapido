@@ -18,7 +18,7 @@ public class ServicoServiceImpl implements ServicoService{
 	ServicoRepository servicoRepository;
 	
 	@Override
-	public List<ServicoModel> getAllServico() {
+	public List<ServicoModel> findAll() {
 		
 		return servicoRepository.findAll();
 	}
