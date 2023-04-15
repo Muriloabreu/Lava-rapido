@@ -8,7 +8,7 @@ import com.app.lavarapido.models.ServicoModel;
 
 public interface ServicoService {
 	
-	List<ServicoModel> getAllServico();
+	List<ServicoModel> findAll();
 	Optional<ServicoModel> findById(Long id);
 	ServicoModel save(ServicoModel servico);
 	void delete(ServicoModel servico);
