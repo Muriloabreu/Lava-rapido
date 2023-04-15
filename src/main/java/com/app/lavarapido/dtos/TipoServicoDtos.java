@@ -1,12 +1,13 @@
 package com.app.lavarapido.dtos;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class TipoServicoDtos {
 	
 	@NotBlank
 	private String nome;
-	@NotBlank
+	@NotNull
 	private double valor;
 	
 	
@@ -15,7 +16,7 @@ public class TipoServicoDtos {
 	}
 	
 	
-	public TipoServicoDtos(@NotBlank String nome, @NotBlank double valor) {
+	public TipoServicoDtos(@NotBlank String nome, @NotNull double valor) {
 		super();
 		this.nome = nome;
 		this.valor = valor;
