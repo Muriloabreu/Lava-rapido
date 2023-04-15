@@ -25,7 +25,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600) /* Serve para permitir que seja acessado de qualquer fonte */
-@RequestMapping("/lava-rapido/tiposervico")
+@RequestMapping("/lava-rapido/tiposervicos")
 public class TpoServicoController {
 	
 	
@@ -34,10 +34,10 @@ public class TpoServicoController {
 	
 	
 	@PostMapping
-	public ResponseEntity<Object> saveConsumo(@RequestBody @Valid TipoServicoDtos tipoServicoDtos){
+	public ResponseEntity<Object> saveTipoServico(@RequestBody @Valid TipoServicoDtos tipoServicoDtos){
 		
 		if (tipoServicoService.existsByNome(tipoServicoDtos.getNome())) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Tipo de Servico já cadastrado!"); /* Check se livro já está cadastrada */
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Tipo de Serviço já cadastrado!"); /* Check se livro já está cadastrada */
 		}
 		
 		TipoServicoModel tipoServicoModel = new TipoServicoModel();
@@ -47,7 +47,7 @@ public class TpoServicoController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<TipoServicoModel>>getAllConsumos(){
+	public ResponseEntity<List<TipoServicoModel>>getAllTipoServico(){
 		
 		return ResponseEntity.status(HttpStatus.OK).body(tipoServicoService.findAll());
 	}
@@ -58,7 +58,7 @@ public class TpoServicoController {
 		Optional<TipoServicoModel> tipoServicoOptional = tipoServicoService.findById(id);
 
 		if (!tipoServicoOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tipo de Servico não encontrado. ");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tipo de Serviço não encontrado. ");
 		}
 
 		return ResponseEntity.status(HttpStatus.OK).body(tipoServicoOptional.get());
@@ -66,26 +66,26 @@ public class TpoServicoController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> delete(@PathVariable(value = "id") Long id) {
+	public ResponseEntity<Object> deleteTipoServico(@PathVariable(value = "id") Long id) {
 
 		Optional<TipoServicoModel> tipoServicoOptional = tipoServicoService.findById(id);
 
 		if (!tipoServicoOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Consumo não encontrado. ");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tipo de Serviço não encontrado. ");
 		}
 
 		tipoServicoService.delete(tipoServicoOptional.get());
-		return ResponseEntity.status(HttpStatus.OK).body("Tipo de Servico deletado com sucesso. ");
+		return ResponseEntity.status(HttpStatus.OK).body("Tipo de Serviço deletado com sucesso. ");
 
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> updateCliente(@PathVariable(value = "id") Long id,
+	public ResponseEntity<Object> updateTipoServico(@PathVariable(value = "id") Long id,
 			                                        @RequestBody @Valid TipoServicoDtos tipoServicoDtos) {
 
 		Optional<TipoServicoModel> tipoServicoOptional = tipoServicoService.findById(id);
 		if (!tipoServicoOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Consumo não encontrado. ");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tipo de Serviço não encontrado. ");
 		}
 		
 		var tipoServicoModel = tipoServicoOptional.get();
