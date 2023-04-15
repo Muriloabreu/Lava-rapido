@@ -1,31 +1,35 @@
 package com.app.lavarapido.dtos;
 
 
+import java.util.List;
+
+
+
+import com.app.lavarapido.models.ConsumoModel;
 import com.app.lavarapido.models.TipoServicoModel;
 import com.app.lavarapido.models.VeiculoModel;
 
-
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class ServicoDtos {
 	
-	@NotBlank
+	@NotNull
 	private TipoServicoModel tipoServico;
-	@NotBlank
+	@NotNull
 	private VeiculoModel veiculo;
-	@NotBlank
+	@NotNull
 	private double valorTotal;
 	
-	public ServicoDtos() {
-		super();
-	}
-
-	public ServicoDtos(@NotBlank TipoServicoModel tipoServico, @NotBlank VeiculoModel veiculo,
-			@NotBlank double valorTotal) {
+	private List<ConsumoModel> consumos;
+	
+	
+	public ServicoDtos(@NotNull TipoServicoModel tipoServico, @NotNull VeiculoModel veiculo, @NotNull double valorTotal,
+			@NotNull List<ConsumoModel> consumos) {
 		super();
 		this.tipoServico = tipoServico;
 		this.veiculo = veiculo;
 		this.valorTotal = valorTotal;
+		this.consumos = consumos;
 	}
 
 	public TipoServicoModel getTipoServico() {
@@ -50,6 +54,14 @@ public class ServicoDtos {
 
 	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
+	}
+	
+	public List<ConsumoModel> getConsumos() {
+		return consumos;
+	}
+	
+	public void setConsumos(List<ConsumoModel> consumos) {
+		this.consumos = consumos;
 	}
 	
 	
