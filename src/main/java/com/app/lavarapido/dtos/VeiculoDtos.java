@@ -1,12 +1,15 @@
 package com.app.lavarapido.dtos;
 
-import java.time.LocalDateTime;
+
 import com.app.lavarapido.models.ClienteModel;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class VeiculoDtos {
 	
 	@NotBlank
+	@Size(max =7)
 	private String placa;
 	@NotBlank
 	private String fabricante;
@@ -14,25 +17,26 @@ public class VeiculoDtos {
 	private String modelo;
 	@NotBlank
 	private String cor;
-	@NotBlank
-	private LocalDateTime registrationDate;
-	@NotBlank
+	@NotNull
 	private ClienteModel cliente;
 	
 	public VeiculoDtos() {
 		super();
 	}
 
+	
+
 	public VeiculoDtos(@NotBlank String placa, @NotBlank String fabricante, @NotBlank String modelo,
-			@NotBlank String cor, @NotBlank LocalDateTime registrationDate, @NotBlank ClienteModel cliente) {
+			@NotBlank String cor, @NotNull ClienteModel cliente) {
 		super();
 		this.placa = placa;
 		this.fabricante = fabricante;
 		this.modelo = modelo;
 		this.cor = cor;
-		this.registrationDate = registrationDate;
 		this.cliente = cliente;
 	}
+
+
 
 	public String getPlaca() {
 		return placa;
@@ -66,13 +70,6 @@ public class VeiculoDtos {
 		this.cor = cor;
 	}
 
-	public LocalDateTime getRegistrationDate() {
-		return registrationDate;
-	}
-
-	public void setRegistrationDate(LocalDateTime registrationDate) {
-		this.registrationDate = registrationDate;
-	}
 
 	public ClienteModel getCliente() {
 		return cliente;
