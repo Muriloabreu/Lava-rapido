@@ -59,8 +59,7 @@ public class ServicoModel {
 		this.consumos = consumos;
 	}
 	public double getValorTotal() {
-		Double soma;
-		soma = 0.0; 
+		
 		
 		return valorTotal;
 	}
