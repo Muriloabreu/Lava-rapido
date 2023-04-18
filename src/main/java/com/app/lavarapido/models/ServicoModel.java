@@ -2,7 +2,6 @@ package com.app.lavarapido.models;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,7 +30,9 @@ public class ServicoModel {
 	@JoinColumn(name = "servicos_id")
 	private List<ConsumoModel> consumos = new ArrayList<>();
 	@Column(nullable = false)
-	private double valorTotal;
+	private double valorTotalConsumos;
+	@Column(nullable = false)
+	private double valorTotalServicos;
 	
 	
 	public Long getId() {
@@ -58,40 +59,35 @@ public class ServicoModel {
 	public void setConsumos(List<ConsumoModel> consumos) {
 		this.consumos = consumos;
 	}
-	public double getValorTotal() {
+	public double getValorTotalConsumos() {
 		
+		Double somaConsumo = 0.0;
 		
-		return valorTotal;
+		for (ConsumoModel consumo : consumos) {
+			
+			somaConsumo += consumo.getValorTotal();
+		}
+		
+		return somaConsumo;
 	}
-	public void setValorTotal(double valorTotal) {
-		this.valorTotal = valorTotal;
-	}
-	
-	@Override
-	public String toString() {
-		return "ServicoModel [id=" + id + ", tipoServico=" + tipoServico + ", veiculo=" + veiculo + ", consumos="
-				+ consumos + ", valorTotal=" + valorTotal + "]";
-	}
-	
-	@Override
-	public int hashCode() {
-		return Objects.hash(consumos, id, tipoServico, valorTotal, veiculo);
+	public void setValorTotalConsumos(double valorTotalConsumos) {
+		this.valorTotalConsumos = valorTotalConsumos;
 	}
 	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ServicoModel other = (ServicoModel) obj;
-		return Objects.equals(consumos, other.consumos) && Objects.equals(id, other.id)
-				&& Objects.equals(tipoServico, other.tipoServico)
-				&& Double.doubleToLongBits(valorTotal) == Double.doubleToLongBits(other.valorTotal)
-				&& Objects.equals(veiculo, other.veiculo);
+	public double getValorTotalServicos() {
+		
+		Double somaServicos = 0.0;
+		
+		somaServicos = tipoServico.getValor() + getValorTotalConsumos();
+		
+		return somaServicos;
 	}
+	
+	public void setValorTotalServicos(double valorTotalServicos) {
+		this.valorTotalServicos = valorTotalServicos;
+	}
+	
+	
 	
 	
 	

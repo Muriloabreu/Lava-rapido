@@ -91,7 +91,7 @@ public class ServicoController {
 		servicoModel.setTipoServico(servicoDtos.getTipoServico());
 		servicoModel.setVeiculo(servicoDtos.getVeiculo());
 		servicoModel.setConsumos(servicoDtos.getConsumos());
-		servicoModel.setValorTotal(servicoDtos.getValorTotal());
+		
 				
 		return ResponseEntity.status(HttpStatus.OK).body(servicoService.save(servicoModel));
 	

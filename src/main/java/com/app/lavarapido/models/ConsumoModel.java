@@ -21,6 +21,8 @@ public class ConsumoModel {
 	@Column(nullable = false, length = 100)
 	private Long quantidade;
 	@Column(nullable = false)
+	private double valorUnidade;
+	@Column(nullable = false)
 	private double valorTotal;
 	
 	public Long getId() {
@@ -42,20 +44,37 @@ public class ConsumoModel {
 		this.quantidade = quantidade;
 	}
 	public double getValorTotal() {
-		return valorTotal;
+		
+		Double valorTot = 0.0;
+		
+		valorTot = getQuantidade() * getValorUnidade();
+		
+		
+		return valorTot;
 	}
 	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
+	
+	public double getValorUnidade() {
+		return valorUnidade;
+	}
+	
+	public void setValorUnidade(double valorUnidade) {
+		this.valorUnidade = valorUnidade;
+	}
+	
 	@Override
 	public String toString() {
-		return "ConsumoModel [id=" + id + ", nome=" + nome + ", quantidade=" + quantidade + ", valorTotal=" + valorTotal
-				+ "]";
+		return "ConsumoModel [id=" + id + ", nome=" + nome + ", quantidade=" + quantidade + ", valorUnidade="
+				+ valorUnidade + ", valorTotal=" + valorTotal + "]";
 	}
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nome, quantidade, valorTotal);
+		return Objects.hash(id, nome, quantidade, valorTotal, valorUnidade);
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -67,8 +86,13 @@ public class ConsumoModel {
 		ConsumoModel other = (ConsumoModel) obj;
 		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
 				&& Objects.equals(quantidade, other.quantidade)
-				&& Double.doubleToLongBits(valorTotal) == Double.doubleToLongBits(other.valorTotal);
+				&& Double.doubleToLongBits(valorTotal) == Double.doubleToLongBits(other.valorTotal)
+				&& Double.doubleToLongBits(valorUnidade) == Double.doubleToLongBits(other.valorUnidade);
 	}
+	
+	
+	
+	
 	
 	
 

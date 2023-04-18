@@ -16,19 +16,17 @@ public class ServicoDtos {
 	@NotNull
 	private TipoServicoModel tipoServico;
 	@NotNull
-	private VeiculoModel veiculo;
+	private VeiculoModel veiculo;	
 	@NotNull
-	private double valorTotal;
-	
 	private List<ConsumoModel> consumos;
 	
 	
-	public ServicoDtos(@NotNull TipoServicoModel tipoServico, @NotNull VeiculoModel veiculo, @NotNull double valorTotal,
+	public ServicoDtos(@NotNull TipoServicoModel tipoServico, @NotNull VeiculoModel veiculo, 
 			@NotNull List<ConsumoModel> consumos) {
 		super();
 		this.tipoServico = tipoServico;
 		this.veiculo = veiculo;
-		this.valorTotal = valorTotal;
+		
 		this.consumos = consumos;
 	}
 
@@ -48,13 +46,6 @@ public class ServicoDtos {
 		this.veiculo = veiculo;
 	}
 
-	public double getValorTotal() {
-		return valorTotal;
-	}
-
-	public void setValorTotal(double valorTotal) {
-		this.valorTotal = valorTotal;
-	}
 	
 	public List<ConsumoModel> getConsumos() {
 		return consumos;
